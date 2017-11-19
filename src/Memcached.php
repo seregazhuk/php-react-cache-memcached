@@ -3,8 +3,10 @@
 namespace seregazhuk\React\Cache;
 
 use React\Cache\CacheInterface;
+use React\EventLoop\LoopInterface;
 use React\Promise\PromiseInterface;
 use seregazhuk\React\Memcached\Client;
+use seregazhuk\React\Memcached\Factory as ClientFactory;
 
 class Memcached implements CacheInterface
 {
@@ -12,18 +14,21 @@ class Memcached implements CacheInterface
      * @var Client
      */
     protected $client;
+
     /**
      * @var string
      */
     protected $prefix;
+
     /**
      * Redis constructor.
-     * @param Client $client
+     * @param LoopInterface $loop
+     * @param string $address
      * @param string $prefix
      */
-    public function __construct(Client $client, $prefix = 'reach:cache:')
+    public function __construct(LoopInterface $loop, $address = '', $prefix = 'reach:cache:')
     {
-        $this->client = $client;
+        $this->client = ClientFactory::createClient($loop, $address);
         $this->prefix = $prefix;
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace seregazhuk\React\Cache;
+namespace seregazhuk\React\Cache\Memcached;
 
 use React\Cache\CacheInterface;
 use React\EventLoop\LoopInterface;
@@ -26,7 +26,7 @@ class Memcached implements CacheInterface
      * @param string $address
      * @param string $prefix
      */
-    public function __construct(LoopInterface $loop, $address = '', $prefix = 'reach:cache:')
+    public function __construct(LoopInterface $loop, $address = 'localhost:11211', $prefix = 'react:cache:')
     {
         $this->client = ClientFactory::createClient($loop, $address);
         $this->prefix = $prefix;
@@ -38,7 +38,7 @@ class Memcached implements CacheInterface
      */
     public function get($key)
     {
-        return $this->client->get($this->prefix);
+        return $this->client->get($this->prefix . $key);
     }
 
 

@@ -25,6 +25,7 @@ composer require seregazhuk/react-cache-memcached
 
 `React\Cache\CacheInterface` has three simple methods to store, retrieve and remove data: 
 
+```php
 use React\EventLoop\Factory;
 use seregazhuk\React\Cache\Memcached\Memcached;
 
@@ -45,3 +46,4 @@ $cache->get('key')->then(function($value){
 $cache->remove('key');
 
 $loop->run();
+```

@@ -21,7 +21,6 @@ class Memcached implements CacheInterface
     protected $prefix;
 
     /**
-     * Redis constructor.
      * @param LoopInterface $loop
      * @param string $address
      * @param string $prefix

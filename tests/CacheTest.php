@@ -22,9 +22,9 @@ class CacheTest extends TestCase
     /** @test */
     public function it_stores_and_retrieves_values()
     {
-        $this->waitForPromiseToResolve($this->cache->set('key', 'test'));
-        
-        $this->assertPromiseResolvesWith($this->cache->get('key'), 'test');
+        $this->waitForPromise($this->cache->set('key', 'test'));
+
+        $this->assertPromiseFulfillsWith($this->cache->get('key'), 'test');
     }
 
     /** @test */
@@ -36,7 +36,7 @@ class CacheTest extends TestCase
     /** @test */
     public function it_removes_value_by_key()
     {
-        $this->waitForPromiseToResolve($this->cache->set('key-to-remove', 'test'));
+        $this->waitForPromise($this->cache->set('key-to-remove', 'test'));
         $this->cache->remove('key-to-remove');
         $this->assertPromiseRejectsWith($this->cache->get('key-to-remove'), Exception::class);
     }

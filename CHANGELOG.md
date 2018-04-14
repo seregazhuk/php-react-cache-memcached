@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## v1.0.1 - 2018-04-14
+- Update to latest dependencies versions 
+
 ## v1.0.0 - 2017-11-22
 - First tagged release
 

@@ -33,29 +33,30 @@ class Memcached implements CacheInterface
 
     /**
      * @param string $key
+     * @param null|mixed $default
      * @return PromiseInterface
      */
-    public function get($key)
+    public function get($key, $default = null): PromiseInterface
     {
         return $this->client->get($this->prefix . $key);
     }
 
-
     /**
      * @param string $key
      * @param mixed $value
+     * @param null|int $ttl
      * @return PromiseInterface
      */
-    public function set($key, $value)
+    public function set($key, $value, $ttl = null): PromiseInterface
     {
-        return $this->client->set($this->prefix . $key, $value);
+        return $this->client->set($this->prefix . $key, $value, 0, $ttl ?: 0);
     }
 
     /**
      * @param string $key
      * @return PromiseInterface
      */
-    public function remove($key)
+    public function delete($key): PromiseInterface
     {
         return $this->client->delete($this->prefix . $key);
     }

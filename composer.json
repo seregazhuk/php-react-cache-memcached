@@ -16,9 +16,8 @@
         }
     ],
     "require": {
-        "php": ">=5.6",
-        "react/cache": "^0.4.1",
-        "seregazhuk/react-memcached": "0.1.4"
+        "php": ">=7.2",
+        "seregazhuk/react-memcached": "^0.2"
     },
     "autoload": {
         "psr-4": {
@@ -31,7 +30,6 @@
         }
     },
     "require-dev": {
-        "seregazhuk/react-promise-testing": "0.*",
-        "phpunit/phpunit": "~5.0"
+        "seregazhuk/react-promise-testing": "0.2"
     }
 }

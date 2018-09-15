@@ -25,6 +25,16 @@ class CacheTest extends TestCase
     }
 
     /** @test */
+    public function it_stores_values_with_ttl(): void
+    {
+        $this->waitForPromise($this->cache->set('key', 'test', 1));
+
+        sleep(1);
+
+        $this->assertPromiseRejectsWith($this->cache->get('key'), Exception::class);
+    }
+
+    /** @test */
     public function it_rejects_promise_when_retrieving_non_existing_key(): void
     {
         $this->assertPromiseRejectsWith($this->cache->get('non-existing-key'), Exception::class);

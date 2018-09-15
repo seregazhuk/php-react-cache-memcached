@@ -10,7 +10,7 @@ Implementation of [react/cache interface](https://github.com/reactphp/cache) tha
 
 ## Installation
 
-Library requires PHP 5.6.0 or above.
+Library requires PHP 7.2.0 or above.
 
 The recommended way to install this library is via [Composer](https://getcomposer.org). 
 [New to Composer?](https://getcomposer.org/doc/00-intro.md)

@@ -8,10 +8,7 @@ use seregazhuk\React\PromiseTesting\TestCase;
 
 class CacheTest extends TestCase
 {
-    /**
-     * @var Memcached
-     */
-    protected $cache;
+    private $cache;
 
     protected function setUp()
     {
@@ -20,7 +17,7 @@ class CacheTest extends TestCase
     }
 
     /** @test */
-    public function it_stores_and_retrieves_values()
+    public function it_stores_and_retrieves_values(): void
     {
         $this->waitForPromise($this->cache->set('key', 'test'));
 
@@ -28,16 +25,16 @@ class CacheTest extends TestCase
     }
 
     /** @test */
-    public function it_rejects_promise_when_retrieving_non_existing_key()
+    public function it_rejects_promise_when_retrieving_non_existing_key(): void
     {
         $this->assertPromiseRejectsWith($this->cache->get('non-existing-key'), Exception::class);
     }
 
     /** @test */
-    public function it_removes_value_by_key()
+    public function it_removes_value_by_key(): void
     {
         $this->waitForPromise($this->cache->set('key-to-remove', 'test'));
-        $this->cache->remove('key-to-remove');
+        $this->cache->delete('key-to-remove');
         $this->assertPromiseRejectsWith($this->cache->get('key-to-remove'), Exception::class);
     }
 }

@@ -35,6 +35,9 @@ $cache = new Memcached($loop);
 // store
 $cache->set('key', 12345);
 
+// store for a minute
+$cache->set('key', 12345, 60);
+
 // retrieve
 $cache->get('key')->then(function($value){
     // handle data
@@ -42,8 +45,8 @@ $cache->get('key')->then(function($value){
 
 // ...
 
-// remove
-$cache->remove('key');
+// delete
+$cache->delete('key');
 
 $loop->run();
 ```
